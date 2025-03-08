@@ -1,0 +1,42 @@
+spring:
+  application:
+    name: MeetSynth-Backend
+  datasource:
+    url: jdbc:mysql://localhost:3306/meetingsynth
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: gl200404GL
+  data:
+    redis:
+      timeout: 10s
+      lettuce:
+        pool:
+          # 连接池最大连接数
+          max-active: 200
+          # 连接池最大阻塞等待时间（使用负值表示没有限制）
+          max-wait: -1ms
+          # 连接池中的最大空闲连接
+          max-idle: 10
+          # 连接池中的最小空闲连接
+          min-idle: 0
+      repositories:
+        enabled: false
+      password: 123456
+      database: 0
+  ai:
+    vectorstore:
+      redis:
+        initialize-schema: true  # 确保为 true，否则索引不会自动创建
+        index: default-index    # 确认索引名称正确
+    dashscope:
+      api-key: sk-18cc42c90712425db15a2fe856be9e3d
+      chat:
+        options:
+          model: deepseek-v3
+      embedding:
+        options:
+          model: text-embedding-v2
+mybatis:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  mapper-locations: classpath:mapper/*.xml
