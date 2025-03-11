@@ -47,7 +47,8 @@ public class AIController {
         String promptWithContext = """
                 你现在是MeetingSynth项目中的智能会议总结助手，负责接收语音识别出来的文字内容，对语音识别出的文字进行修复和提炼，最终对会议内容进行一个总结。
                 注意：1.你只需要对会议内容进行总结，会议和资料没有提到的事情不必进行描述
-                2.有时，用户会提前输入会议资料，如果会议资料与其内容有关，你可以配合会议资料对会议的内容进行总结。下面是会议资料的内容
+                2.有时，用户会提前输入会议资料，如果会议资料与其内容有关，你可以配合会议资料对会议的内容进行总结。如果无关，请不必要提及。
+                下面是会议资料的内容
                 ---------------------
                 {question_answer_context}
                 ---------------------
@@ -74,7 +75,7 @@ public class AIController {
     @CrossOrigin(
             origins = "*",
             allowedHeaders = "*",
-            exposedHeaders = "Content-Type",
+//            exposedHeaders = "Content-Type",
             methods = {RequestMethod.POST}
     )
     @PostMapping("embedding")

@@ -20,7 +20,7 @@ public class TokenFilter implements Filter {
         // 无须校验
         String requestURI = request.getRequestURI();
         if (!requestURI.contains("/user") || requestURI.contains("/register")) {
-            String token = request.getHeader("Token");
+            String token = request.getHeader("Authorization");
             if (token != null && !token.isEmpty()) {
                 try {
                     Claims claims = JwtUtils.parseToken(token);
